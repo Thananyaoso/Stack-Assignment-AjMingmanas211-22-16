@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
       } else if (cclose > copen) {
         cout << "Too many close" << endl;
       } else {
-        cout << "hmm" << endl;
+        cout << "Not match" << endl;
       }
     }
   }
