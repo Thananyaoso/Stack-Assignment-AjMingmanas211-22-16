@@ -1,6 +1,7 @@
 #ifndef stack_h
 #define  stack_h
 #include "node.h"
+using namespace std;
 
 class Stack{
 private:
@@ -8,10 +9,11 @@ private:
 	 int size;
 public:
     Stack(NodePtr = NULL);
-    ~Stack();
     char pop();
+    bool empt();
     void push(char);
     char get_top();
+    ~Stack();
 };
 
 Stack::Stack(NodePtr t){
@@ -50,6 +52,17 @@ char Stack::pop(){
 	 cout<<"Empty stack"<<endl;
    return 0;
 	}
+bool Stack::empt(){
+  if(top){
+    return false;
+  }
+  return true;
+}
+
+char Stack::get_top(){
+  return top->get_value();
+}
+
 Stack::~Stack(){
    cout<<"Clearing all stacks"<<endl;
   	int i;
@@ -60,10 +73,6 @@ for(i=0;i<size;i++){
      delete t;
    	
   }
-}
-
-char Stack::get_top(){
-  return top->get_value();
 }
 
 

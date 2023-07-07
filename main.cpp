@@ -2,12 +2,14 @@
 #include <cstring>
 #include "stack.h"
 
+using namespace std;
+
 int main(int argc, char* argv[]) {
   if (argc > 1) {
     for (int i = 1; i < argc; i++) {
       int copen = 0;
       int cclose = 0;
-      std::string expression = argv[i];
+      string expression = argv[i];
       bool equal = false;
       Stack stack;
 
@@ -21,8 +23,7 @@ int main(int argc, char* argv[]) {
             if ((open == '(' && c == ')') ||
                 (open == '[' && c == ']') ||
                 (open == '{' && c == '}')) {
-              cclose++; 
-              
+              cclose++;
               continue;
             }
           }
@@ -36,15 +37,15 @@ int main(int argc, char* argv[]) {
       }
 
       if (equal) {
-        std::cout << "Match" << std::endl;
+        cout << "Match" << endl;
       } else if (copen > cclose) {
-        std::cout << "Too many open" << std::endl;
+        cout << "Too many open" << endl;
       } else if (cclose > copen) {
-        std::cout << "Too many close" << std::endl;
+        cout << "Too many close" << endl;
       } else {
+        cout << "hmm" << endl;
       }
     }
   }
-
   return 0;
 }
