@@ -17,6 +17,7 @@ NODE::NODE(char x){
 	data=x;
 	nextPtr=NULL;
 
+  
 }
 char NODE::get_value(){
 	return data;

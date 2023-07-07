@@ -18,6 +18,7 @@ Stack::Stack(NodePtr t){
   if(t) {
     top=t;
     size=1;
+    
   }
  else{
    top=NULL;

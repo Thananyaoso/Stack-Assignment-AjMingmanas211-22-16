@@ -21,7 +21,8 @@ int main(int argc, char* argv[]) {
             if ((open == '(' && c == ')') ||
                 (open == '[' && c == ']') ||
                 (open == '{' && c == '}')) {
-              cclose++;
+              cclose++; 
+              
               continue;
             }
           }
