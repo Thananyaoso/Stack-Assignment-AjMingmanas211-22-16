@@ -1,51 +1,41 @@
 #include <iostream>
-#include <cstring>
-#include "stack.h"
+#include <iomanip>
 
 using namespace std;
 
-int main(int argc, char* argv[]) {
-  if (argc > 1) {
-    for (int i = 1; i < argc; i++) {
-      int copen = 0;
-      int cclose = 0;
-      string expression = argv[i];
-      bool equal = false;
-      Stack stack;
+#include "stack.h"
+#include <cstring>
 
-      for (char c : expression) {
-        if (c == '(' || c == '[' || c == '{') {
-          stack.push(c);
-          copen++;
-        } else if (c == ')' || c == ']' || c == '}') {
-          char open = stack.get_top();
-          if (stack.empt()) {
-            if ((open == '(' && c == ')') ||
-                (open == '[' && c == ']') ||
-                (open == '{' && c == '}')) {
-              cclose++;
-              continue;
-            }
-          }
-          stack.pop();
-          copen--;
-        }
-      }
-
-      if (stack.empt() && copen == 0 && cclose == 0) {
-        equal = true;
-      }
-
-      if (equal) {
-        cout << "Match" << endl;
-      } else if (copen > cclose) {
-        cout << "Too many open" << endl;
-      } else if (cclose > copen) {
-        cout << "Too many close" << endl;
-      } else {
-        cout << "Not match" << endl;
-      }
+int main(int argc, char *argv[]) {
+  Stack s;
+  int match;
+  char c;
+  for(int i = 1; i < argc; i++){
+    match = 0;
+    for(int j = 0; j < strlen(argv[i]); j++){
+    switch(argv[i][j]){
+      case '{' :
+        s.push(argv[i][j]);
+        match++;
+        break;
+      case '[' :
+        s.push(argv[i][j]);
+        match++;
+        break;
+      case '}' :
+        c = s.pop();
+        match--;
+        break;
+      case ']' :
+        c = s.pop();
+        match--;
+        break;
     }
   }
-  return 0;
+      cout << ((argv[i][strlen(argv[i]) - 1] == '[' 
+      || argv[i][strlen(argv[i]) - 1] == '{') ? "Not matched :(" :
+      (match == 0) ? "Matched!!" :
+      (match > 0) ? "Too many opens!!" : "Too many closes!!") << "\n";
+  }
+    return 0;
 }

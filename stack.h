@@ -10,7 +10,6 @@ private:
 public:
     Stack(NodePtr = NULL);
     char pop();
-    bool empt();
     void push(char);
     char get_top();
     ~Stack();
@@ -52,12 +51,6 @@ char Stack::pop(){
 	 cout<<"Empty stack"<<endl;
    return 0;
 	}
-bool Stack::empt(){
-  if(top){
-    return false;
-  }
-  return true;
-}
 
 char Stack::get_top(){
   return top->get_value();

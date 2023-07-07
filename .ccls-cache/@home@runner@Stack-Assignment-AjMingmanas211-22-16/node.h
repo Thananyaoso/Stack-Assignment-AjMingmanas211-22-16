@@ -1,5 +1,6 @@
 #ifndef node_h
 #define node_h
+using namespace std;
 
 class NODE{
 	int data;
@@ -17,6 +18,7 @@ NODE::NODE(char x){
 	data=x;
 	nextPtr=NULL;
 
+  
 }
 char NODE::get_value(){
 	return data;
@@ -34,7 +36,7 @@ void NODE::set_next(NODE *t){
 }
 
 NODE::~NODE(){
-	 cout<<"deleting " <<data<<endl;
+	 //cout<<"deleting " <<data<<endl;
 
 }
 
